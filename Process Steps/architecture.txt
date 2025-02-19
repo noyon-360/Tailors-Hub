@@ -1,0 +1,15 @@
+lib/
+├── core/                  # Core utilities (constants, themes, etc.)
+├── data/                  # Data layer
+│   ├── datasources/       # Remote and local data sources
+│   ├── models/            # Data models (DTOs)
+│   ├── repositories/      # Repositories to manage data
+├── domain/                # Business logic layer
+│   ├── entities/          # Business objects (e.g., Tailor, Order)
+│   ├── repositories/      # Abstract repository interfaces
+│   ├── usecases/          # Use cases (e.g., SearchTailors, PlaceOrder)
+├── presentation/          # Presentation layer
+│   ├── bloc/              # BLoCs for state management
+│   ├── pages/             # Screens (e.g., HomePage, TailorProfilePage)
+│   ├── widgets/           # Reusable UI components
+└── main.dart              # App entry point
