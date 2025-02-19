@@ -1,4 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tailors_hub/core/secure_key_content/secure_key.dart';
 
 part 'splash_screen_event.dart';
 
@@ -8,7 +11,14 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(SplashInitial()) {
     on<SplashScreenEvent>((event, emit) async {
       await Future.delayed(Duration(seconds: 2));
-      emit(SplashComplete());
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      bool isFirstTime = preferences.getBool(SecureKey.isFirstTimeKey) ?? true;
+
+      if (isFirstTime) {
+        emit(OnboardingScreenComplete());
+      } else {
+        emit(SplashComplete());
+      }
     });
   }
 

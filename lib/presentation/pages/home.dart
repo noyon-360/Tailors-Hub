@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tailors_hub/config/route/routes_name.dart';
+import 'package:tailors_hub/core/secure_key_content/secure_key.dart';
 import 'package:tailors_hub/core/themes.dart';
 import 'package:tailors_hub/presentation/bloc/Theme%20Management/them_cubit.dart';
 import 'package:tailors_hub/presentation/widgets/custom_textfield.dart';
@@ -68,6 +71,16 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
+
+          ElevatedButton(onPressed: (){
+            Navigator.pushReplacementNamed(context, RouteNames.tailorLogin);
+          }, child: Text("Tailor Login")),
+
+          ElevatedButton(onPressed: () async{
+            SharedPreferences pref = await SharedPreferences.getInstance();
+            pref.remove(SecureKey.isFirstTimeKey);
+          }, child: Text("Delete First Time Screen"))
+
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(items: const <BottomNavigationBarItem> [
