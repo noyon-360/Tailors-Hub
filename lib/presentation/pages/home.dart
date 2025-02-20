@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
           ),
 
           ElevatedButton(onPressed: (){
-            Navigator.pushReplacementNamed(context, RouteNames.tailorLogin);
+            Navigator.pushReplacementNamed(context, RouteNames.login);
           }, child: Text("Tailor Login")),
 
           ElevatedButton(onPressed: () async{
