@@ -32,6 +32,15 @@ class AppThemes {
       buttonColor: Color(0xFFFF6F61), // Coral (Primary Button)
       disabledColor: Color(0xFFBDBDBD), // Disabled Button
     ),
+
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        side: const BorderSide(color: Color(0xFFFF6F61)),
+      ),
+    ),
+
     colorScheme: const ColorScheme.light(
       primary: Color(0xFFFF6F61),
       // Coral
@@ -126,6 +135,14 @@ class AppThemes {
     buttonTheme: const ButtonThemeData(
       buttonColor: Color(0xFFFF6F61), // Coral (Primary Button)
       disabledColor: Color(0xFF757575), // Disabled Button
+    ),
+
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        side: const BorderSide(color: Color(0xFFFF6F61)),
+      ),
     ),
 
     colorScheme: const ColorScheme.dark(
