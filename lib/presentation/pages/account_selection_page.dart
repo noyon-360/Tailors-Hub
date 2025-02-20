@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tailors_hub/config/route/routes_name.dart';
-import 'package:tailors_hub/presentation/widgets/account_type_card.dart';
 
 class AccountSelectionPage extends StatelessWidget {
   const AccountSelectionPage({super.key});
@@ -34,116 +33,88 @@ class AccountSelectionPage extends StatelessWidget {
                 ),
                 SizedBox(height: 40),
 
-                OrientationBuilder(
-                  builder: (context, orientation) {
-                    bool isLandscape =
-                        MediaQuery.of(context).orientation ==
-                        Orientation.landscape;
-                    print(isLandscape);
-                    return isLandscape
-                        ? Row(
-                          children: [
-                            Expanded(
-                              child: AccountTypeCard(
-                                icon: Icons.work,
-                                title: 'Tailor',
-                                subtitle:
-                                    'Provide tailoring services and grow your business.',
-                                color: Colors.orange,
-                                // Coral color
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                    context,
-                                    RouteNames.tailorLogin,
-                                  );
-                                },
-                              ),
-                            ),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    bool isWide = constraints.maxWidth > 600;
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: _buildAccountCard(
+                            icon: Icons.work,
+                            title: 'Tailor',
+                            subtitle: 'Provide tailoring services and grow your business.',
+                            color: Colors.orange,
+                            onTap: () {
 
-                            SizedBox(width: 20),
-
-                            // Style Creator Option
-                            Expanded(
-                              child: AccountTypeCard(
-                                icon: Icons.person,
-                                title: 'Style Creator',
-                                subtitle:
-                                    'Get custom clothing made for your unique style.',
-                                color: Colors.indigo,
-                                // Navy blue
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                    context,
-                                    '/customer_register',
-                                  );
-                                },
-                              ),
-                            ),
-                          ],
-                        )
-                        : Column(
-                          children: [
-                            AccountTypeCard(
-                              icon: Icons.work,
-                              title: 'Tailor',
-                              subtitle:
-                                  'Provide tailoring services and grow your business.',
-                              color: Colors.orange,
-                              // Coral color
-                              onTap: () {
-                                Navigator.pushNamed(
+                              Navigator.pushNamed(
+                                context,
+                                RouteNames.authScreenController,
+                                arguments: true
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(width: isWide ? 20 : 10),
+                        Expanded(
+                          child: _buildAccountCard(
+                            icon: Icons.person,
+                            title: 'Style Creator',
+                            subtitle: 'Get custom clothing made for your unique style.',
+                            color: Colors.indigo,
+                            onTap: () {
+                              Navigator.pushNamed(
                                   context,
-                                  RouteNames.tailorLogin,
-                                );
-                              },
-                            ),
-
-                            SizedBox(height: 20),
-
-                            // Style Creator Option
-                            AccountTypeCard(
-                              icon: Icons.person,
-                              title: 'Style Creator',
-                              subtitle:
-                                  'Get custom clothing made for your unique style.',
-                              color: Colors.indigo,
-                              // Navy blue
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  '/customer_register',
-                                );
-                              },
-                            ),
-                          ],
-                        );
+                                  RouteNames.authScreenController,
+                                  arguments: false
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    );
                   },
                 ),
-                // Tailor Option
-                // AccountTypeCard(
-                //   icon: Icons.work,
-                //   title: 'Tailor',
-                //   subtitle: 'Provide tailoring services and grow your business.',
-                //   color: Colors.orange, // Coral color
-                //   onTap: () {
-                //     Navigator.pushNamed(context, '/tailor_register');
-                //   },
-                // ),
-                //
-                // SizedBox(height: 20),
-                //
-                // // Style Creator Option
-                // AccountTypeCard(
-                //   icon: Icons.person,
-                //   title: 'Style Creator',
-                //   subtitle: 'Get custom clothing made for your unique style.',
-                //   color: Colors.indigo, // Navy blue
-                //   onTap: () {
-                //     Navigator.pushNamed(context, '/customer_register');
-                //   },
-                // ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAccountCard({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(15),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(icon, size: 50, color: color),
+              const SizedBox(height: 10),
+              Text(
+                title,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                subtitle,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+              ),
+            ],
           ),
         ),
       ),
