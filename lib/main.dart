@@ -10,6 +10,7 @@ import 'package:tailors_hub/core/themes.dart';
 import 'package:tailors_hub/presentation/bloc/Theme%20Management/them_cubit.dart';
 import 'package:tailors_hub/presentation/bloc/Theme%20Management/them_state.dart';
 import 'package:tailors_hub/presentation/bloc/splash_bloc/splash_screen_bloc.dart';
+import 'package:tailors_hub/presentation/pages/account_selection_page.dart';
 
 import 'package:tailors_hub/presentation/pages/home.dart';
 import 'package:tailors_hub/presentation/pages/onboarding_screen.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
               buildWhen: (previous, current) => previous != current,
               builder: (context, state) {
                 if (state is SplashComplete) {
-                  return Home();
+                  return AccountSelectionPage();
                 } else if (state is OnboardingScreenComplete) {
                   return OnboardingScreen();
                 } else {
