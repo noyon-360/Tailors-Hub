@@ -9,6 +9,7 @@ import 'package:tailors_hub/core/secure_key_content/secure_key.dart';
 import 'package:tailors_hub/core/themes.dart';
 import 'package:tailors_hub/presentation/bloc/Theme%20Management/them_cubit.dart';
 import 'package:tailors_hub/presentation/bloc/Theme%20Management/them_state.dart';
+import 'package:tailors_hub/presentation/bloc/auth_screen_switch/auth_switch_cubit.dart';
 import 'package:tailors_hub/presentation/bloc/splash_bloc/splash_screen_bloc.dart';
 import 'package:tailors_hub/presentation/pages/account_selection_page.dart';
 
@@ -30,10 +31,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          lazy: false,
-          create: (context) => SplashBloc()..add(SplashScreenEvent()),
-        ),
+        BlocProvider(lazy: false, create: (context) => SplashBloc()..add(SplashScreenEvent()),),
+        BlocProvider(lazy: false, create: (context) => AuthSwitchCubit()),
+
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         buildWhen: (previous, current) => previous != current,
