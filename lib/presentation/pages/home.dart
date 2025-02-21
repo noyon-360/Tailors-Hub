@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tailors_hub/config/route/routes_name.dart';
 import 'package:tailors_hub/core/secure_key_content/secure_key.dart';
-import 'package:tailors_hub/core/themes.dart';
 import 'package:tailors_hub/presentation/bloc/Theme%20Management/them_cubit.dart';
+import 'package:tailors_hub/presentation/pages/auth/login_screen.dart';
 import 'package:tailors_hub/presentation/widgets/tailors_hub_drawer.dart';
 import 'package:tailors_hub/presentation/widgets/custom_textfield.dart';
 
@@ -24,7 +24,6 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Home Page"),
         actions: [Icon(Icons.info)],
-      
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -74,6 +73,7 @@ class _HomeState extends State<Home> {
           ),
 
           ElevatedButton(onPressed: (){
+            // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(isTailor: isTailor)))
             Navigator.pushReplacementNamed(context, RouteNames.login);
           }, child: Text("Tailor Login")),
 
