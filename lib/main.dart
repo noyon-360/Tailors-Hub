@@ -63,34 +63,6 @@ class MyApp extends StatelessWidget {
             title: 'Tailor Hub',
             theme: themeCubit.getThemeData(),
 
-            // darkTheme: AppThemes.darkTheme,
-            // themeMode: ThemeMode.system,
-
-            // initialRoute: BlocBuilder<SplashBloc, SplashState>(
-            //   buildWhen: (previous, current) => previous != current,
-            //   builder: (context, state) {
-            //     if (state is SplashComplete) {
-            //       return RouteNames.authScreenController;
-            //     } else if (state is OnboardingScreenComplete) {
-            //       return RouteNames.onboarding;
-            //     } else {
-            //       return RouteNames.splashScreen;
-            //     }
-            //   },
-            // ),
-            // home: BlocBuilder<SplashBloc, SplashState>(
-            //   buildWhen: (previous, current) => previous != current,
-            //   builder: (context, state) {
-            //     if (state is SplashComplete) {
-            //       return AccountSelectionPage();
-            //     } else if (state is OnboardingScreenComplete) {
-            //       return OnboardingScreen();
-            //     } else {
-            //       return SplashScreen();
-            //     }
-            //   },
-            // ),
-
             initialRoute: RouteNames.splashScreen,
             onGenerateRoute: Routes.generateRoutes,
           );
