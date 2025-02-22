@@ -73,7 +73,6 @@ class _HomeState extends State<Home> {
           ),
 
           ElevatedButton(onPressed: (){
-            // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(isTailor: isTailor)))
             Navigator.pushReplacementNamed(context, RouteNames.login);
           }, child: Text("Tailor Login")),
 

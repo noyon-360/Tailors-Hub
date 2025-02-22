@@ -37,11 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text("Login Success")));
-            // Navigator.pushReplacementNamed(context, RouteNames.home);
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => Home()),
-            );
+            Navigator.pushReplacementNamed(context, RouteNames.home);
+
           }
 
           if (state is AuthFailure) {
@@ -49,13 +46,6 @@ class _LoginScreenState extends State<LoginScreen> {
             print(state.message);
           }
 
-          // if (state is CustomerAuthenticated) {
-          //   ScaffoldMessenger.of(
-          //     context,
-          //   ).showSnackBar(SnackBar(content: Text("Login Success")));
-          //   // Navigator.pushReplacementNamed(context, RouteNames.home);
-          //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
-          // }
         },
         builder: (context, state) {
           if (state is AuthLoading) {

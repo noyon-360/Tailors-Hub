@@ -43,12 +43,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool(SecureKey.isFirstTimeKey, false);
 
-    // Todo : Check the problem why "pushReplacementNamed" is not working here
-    // Navigator.pushReplacementNamed(context, RouteNames.home);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => Home()),
-    );
+    Navigator.pushReplacementNamed(context, RouteNames.home);
+
   }
 
   @override

@@ -78,18 +78,20 @@ class MyApp extends StatelessWidget {
             //     }
             //   },
             // ),
-            home: BlocBuilder<SplashBloc, SplashState>(
-              buildWhen: (previous, current) => previous != current,
-              builder: (context, state) {
-                if (state is SplashComplete) {
-                  return AccountSelectionPage();
-                } else if (state is OnboardingScreenComplete) {
-                  return OnboardingScreen();
-                } else {
-                  return SplashScreen();
-                }
-              },
-            ),
+            // home: BlocBuilder<SplashBloc, SplashState>(
+            //   buildWhen: (previous, current) => previous != current,
+            //   builder: (context, state) {
+            //     if (state is SplashComplete) {
+            //       return AccountSelectionPage();
+            //     } else if (state is OnboardingScreenComplete) {
+            //       return OnboardingScreen();
+            //     } else {
+            //       return SplashScreen();
+            //     }
+            //   },
+            // ),
+
+            initialRoute: RouteNames.splashScreen,
             onGenerateRoute: Routes.generateRoutes,
           );
         },
